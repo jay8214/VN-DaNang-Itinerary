@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>越南-峴港自由行手冊</title>
+    <style>
+        :root {
+            --vietnam-red: #DA020E;
+            --vietnam-yellow: #FFCD00;
+            --vietnam-green: #228B22;
+            --dark-red: #B8001A;
+            --light-yellow: #FFF8DC;
+            --dark-green: #006400;
+            --cream: #FFF8F0;
+            --gold: #FFD700;
+            --text-dark: #2C2C2C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--cream) 0%, #FFF 100%);
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--vietnam-red);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(218, 2, 14, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(218, 2, 14, 0.4);
+        }
+
+        /* Cover Page */
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--vietnam-red) 0%, var(--dark-red) 100%);
+            color: white;
+            margin: -20px;
+            padding: 40px;
+            page-break-after: always;
+        }
+
+        .cover h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cover-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: url('https://img.freepik.com/premium-vector/traditional-art-da-nang-vietnam_714091-110175.jpg') center/cover;
+            border: 8px solid var(--vietnam-yellow);
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        }
+
+        .lantern-decoration {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .lantern {
+            width: 60px;
+            height: 80px;
+            background: var(--vietnam-yellow);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            border: 3px solid var(--gold);
+        }
+
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--dark-red);
+            border-radius: 50%;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--light-yellow);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid var(--vietnam-red);
+        }
+
+        .toc h2 {
+            color: var(--vietnam-red);
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .toc ul {
+            list-style: none;
+            font-size: 1.2em;
+        }
+
+        .toc li {
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--vietnam-green);
+        }
+
+        .toc a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--vietnam-red);
+        }
+
+        /* Section Headers */
+        .section {
+            margin: 40px 0;
+            page-break-inside: avoid;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--vietnam-red) 0%, var(--dark-red) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Lotus Divider */
+        .lotus-divider {
+            text-align: center;
+            margin: 30px 0;
+            color: var(--vietnam-green);
+            font-size: 2em;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--vietnam-yellow);
+        }
+        .card iframe {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card h3 {
+            color: var(--vietnam-red);
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        /* Itinerary Table */
+        .itinerary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        .itinerary-table th, .itinerary-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .itinerary-table th {
+            background: var(--vietnam-green);
+            color: white;
+            font-weight: bold;
+        }
+
+        .day-header {
+            background: var(--vietnam-red) !important;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .itinerary-table tr:nth-child(even) {
+            background: var(--light-yellow);
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .image-item {
+            text-align: center;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .image-item h4 {
+            color: var(--vietnam-red);
+            margin-bottom: 5px;
+        }
+
+        /* Expense Table */
+        .expense-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .expense-table th, .expense-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .expense-table th {
+            background: var(--vietnam-yellow);
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .expense-table .category {
+            background: var(--light-yellow);
+            font-weight: bold;
+        }
+
+        /* Checklist */
+        .checklist {
+            background: var(--cream);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .checklist ul {
+            list-style: none;
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--vietnam-green);
+            font-weight: bold;
+        }
+
+        /* Restaurant Cards */
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .restaurant-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--vietnam-red);
+        }
+
+        .restaurant-card h4 {
+            color: var(--vietnam-red);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .restaurant-card .specialty {
+            color: var(--vietnam-green);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Branding */
+        .kuse-branding {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .kuse-branding:hover {
+            background: rgba(218, 2, 14, 0.1);
+            color: var(--vietnam-red);
+            transform: translateY(-2px);
+        }
+
+        .kuse-branding svg {
+            height: 1.2em;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        /* Print Styles */
+        @media print {
+            .print-btn, .kuse-branding {
+                display: none;
+            }
+            
+            .container {
+                max-width: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .cover {
+                margin: 0;
+                height: 100vh;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .itinerary-table {
+                page-break-inside: avoid;
+            }
+            
+            body {
+                background: white;
+                font-size: 12pt;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .cover h1 {
+                font-size: 2.5em;
+            }
+            
+            .cover-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .checklist ul {
+                columns: 1;
+            }
+            
+            .print-btn {
+                top: 10px;
+                right: 10px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="printPage()">列印手冊</button>
+    
+    <div class="container">
+        <!-- Cover Page -->
+        <div class="cover">
+            <h1>越南-峴港自由行手冊</h1>
+            <div class="cover-image"></div>
+            <div class="lantern-decoration">
+                <div class="lantern"></div>
+                <div class="lantern"></div>
+                <div class="lantern"></div>
+            </div>
+            <p style="font-size: 1.2em; margin-top: 20px;">探索越南中部的魅力古城</p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>目錄</h2>
+            <ul>
+                <li><a href="#preparation">事前準備</a></li>
+                <li><a href="#checklist">旅行攜帶檢查清單</a></li>
+                <li><a href="#itinerary">六天完整行程表</a></li>
+                <li><a href="#attractions">主要景點概覽</a></li>
+                <li><a href="#food">美食推薦</a></li>
+                <li><a href="#expenses">花費估算表</a></li>
+                <li><a href="#notes">其他注意事項</a></li>
+            </ul>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <!-- Preparation Section -->
+        <div id="preparation" class="section">
+            <div class="section-header">
+                <h2>事前準備</h2>
+            </div>
+            
+            <div class="card">
+                <h3>📋 簽證資訊</h3>
+                <p>台灣護照可申請落地簽證或電子簽證，建議事先申請電子簽證以節省時間。</p>
+            </div>
+
+            <div class="card">
+                <h3>💰 匯率與換匯</h3>
+                <p><strong>匯率：</strong>約 1:890 (台幣:越南盾)</p>
+                <p><strong>建議：</strong>預備小額越南盾現金，也可到機場或市區換匯點兌換</p>
+            </div>
+
+            <div class="card">
+                <h3>📱 必備APP</h3>
+                <ul>
+                    <li><strong>Grab：</strong>當地叫車與外送平台</li>
+                    <li><strong>Google Maps：</strong>導航必備</li>
+                    <li><strong>Google翻譯：</strong>語言溝通工具</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🔌 電器資訊</h3>
+                <p><strong>電壓：</strong>220V</p>
+                <p><strong>插頭：</strong>兩腳圓型或扁型插頭皆可使用</p>
+            </div>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <!-- Checklist Section -->
+        <div id="checklist" class="section">
+            <div class="section-header">
+                <h2>旅行攜帶檢查清單</h2>
+            </div>
+            
+            <div class="checklist">
+                <ul>
+                    <li>護照（有效期6個月以上）</li>
+                    <li>簽證申請文件</li>
+                    <li>換匯現金</li>
+                    <li>信用卡</li>
+                    <li>機票</li>
+                    <li>住宿憑證</li>
+                    <li>保險證明</li>
+                    <li>手機/充電器</li>
+                    <li>行動電源</li>
+                    <li>插頭轉接器</li>
+                    <li>輕便防水外套</li>
+                    <li>遮陽帽</li>
+                    <li>墨鏡</li>
+                    <li>防曬乳</li>
+                    <li>輕便好走鞋</li>
+                    <li>常用藥品</li>
+                    <li>口罩</li>
+                    <li>個人衛生用品</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <!-- Itinerary Section -->
+        <div id="itinerary" class="section">
+            <div class="section-header">
+                <h2>六天完整行程表</h2>
+            </div>
+            
+              <table class="itinerary-table">
+                <thead>
+                    <tr>
+                        <th>時間</th>
+                        <th>景點/活動</th>
+                        <th>交通方式</th>
+                        <th>預估花費 (TWD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="day-header">
+                        <td colspan="4">第一天 (8/3) - 抵達峴港</td>
+                    </tr>
+                    <tr>
+                        <td>09:45-11:35</td>
+                        <td>抵達峴港國際機場 (DAD)</td>
+                        <td>飛機</td>
+                        <td>機票費用</td>
+                    </tr>
+                    <tr>
+                        <td>12:00-13:00</td>
+                        <td>機場接送前往飯店</td>
+                        <td>預約接送/Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>13:00-14:00</td>
+                        <td>午餐：Bếp Cuốn Đà Nẵng</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>14:00-14:30</td>
+                        <td>Check-in Radisson RED Danang</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>16:00-17:30</td>
+                        <td>Babylon Spa Massage</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>18:30-20:00</td>
+                        <td>晚餐：Thìa Gỗ 峴港餐廳</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>21:00~</td>
+                        <td>龍橋噴火</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    </tbody>
+            </table>
+            <div class="card">
+                <h3>🗺️ 第一天主要路線</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d21275.655322354145!2d108.21194963003869!3d16.057326597308695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x314219bab9b63451%3A0xd7a9441e697a048c!2zRGFuYW5nIEludGVybmF0aW9uYWwgQWlycG9ydCwgxJAuIE5ndXnhu4VuIFbEg24gTGluaCwgSOG6o2kgQ2jDonUsIMSQw6AgTuG6tW5nIDU1MDAwMOi2iuWNlw!3m2!1d16.0569804!2d108.2025372!4m5!1s0x314217f4632748f9%3A0xdc14dcdba4c73425!2zQuG6v3AgQ3Xhu5FuIMSQw6AgTuG6tW5nLCAzMS0zMyBUcuG6p24gQuG6oWNoIMSQ4bqxbmcsIFBoxrDhu5tjIE3hu7ksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAw6LaK5Y2X!3m2!1d16.0579628!2d108.2451505!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2zUmFkaXNzb24gUkVEIERhbmFuZywgOTAgVsO1IE5ndXnDqm4gR2nDoXAsIE3Dom4gVGjDoWksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAw6LaK5Y2X!3m2!1d16.0808382!2d108.24687229999999!4m5!1s0x31421783eff8331f%3A0x6fcd8714b403a1e!2zQmFieWxvbiBTcGEgTWFzc2FnZSwgMzAgSMOgIELhu5VuZywgUGjGsOG7m2MgTeG7uSwgU8ahbiBUcsOgLCDEkMOgIE7hurVuZyA1NTAwMDDotorljZc!3m2!1d16.0672167!2d108.2441068!4m5!1s0x314219c3b54c18d7%3A0x5028941bdf1ab5f5!2zVGjDrGEgR-G7lyDls7TmuK_ppJDlu7MgNTUwMDAw6LaK5Y2XIMSQw6AgTuG6tW5nLCBOZ8WpIEjDoG5oIFPGoW4sIE3hu7kgQW4sIFBoYW4gVGjDumMgRHV54buHbg!3m2!1d16.052986699999998!2d108.2415777!4m5!1s0x31421996588a512f%3A0x493b652aa06b12e!2zRHJhZ29uIEJyaWRnZSwgxJAuIE5ndXnhu4VuIFbEg24gTGluaCwgUGjGsOG7m2MgTmluaCwgSOG6o2kgQ2jDonUsIMSQw6AgTuG6tW5nIDU1MDAwMOi2iuWNlw!3m2!1d16.0612215!2d108.2296818!5e0!3m2!1szh-TW!2stw!4v1752574022141!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+              <table class="itinerary-table">
+                <thead>
+                    <tr class="day-header">
+                        <td colspan="4">第二天 (8/4) - 城市漫遊</td>
+                    </tr>
+                    <tr>
+                        <td>09:00-12:00</td>
+                        <td>五行山 (Marble Mountains)/靈應寺</td>
+                        <td>Grab</td>
+                        <td>門票+電梯約 $150</td>
+                    </tr>
+                    <tr>
+                        <td>12:30-14:00</td>
+                        <td>午餐：Mì Quảng Ếch Bếp Trang (米其林推薦)</td>
+                        <td>Grab</td>
+                        <td>人均約 $250-$400</td>
+                    </tr>
+                    <tr>
+                        <td>14:00-14:30</td>
+                        <td>岘港粉紅教堂</td>
+                        <td>步行 ~5分鐘</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>14:30-15:00</td>
+                        <td>Han Market</td>
+                        <td>步行 ~5分鐘</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>15:00-16:00</td>
+                        <td>Cộng Cà Phê 越共咖啡</td>
+                        <td>步行 ~5分鐘</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>18:00-19:30</td>
+                        <td>晚餐：Pizza 4P's Indochina Da Nang</td>
+                        <td>步行 ~5分鐘</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>21:00~</td>
+                        <td>山茶夜市</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                                    </tbody>
+            </table>
+            <div class="card">
+                <h3>🗺️ 第二天主要路線</h3>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m64!1m12!1m3!1d61348.709189048255!2d108.20060089060868!3d16.050209516824964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m49!3e0!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2sRadisson%20RED%20Danang!3m2!1d16.0808382!2d108.24687229999999!4m5!1s0x31420dd4e14b2edb%3A0xbc6e1faf738be4c5!2zTWFyYmxlIE1vdW50YWlucywgSHV54buBbiBUcsOibiBDw7RuZyBDaMO6YSwgSG9hIEhhaSwg5LqU6KGM5bGx6YOh5bO05riv6LaK5Y2X!3m2!1d16.0037104!2d108.2631605!4m5!1s0x314219caeead191d%3A0x7bf5a315d7a2e786!2zTcOsIFF14bqjbmcg4bq-Y2ggQuG6v3AgVHJhbmc!3m2!1d16.062014899999998!2d108.21637039999999!4m5!1s0x314219004ea50851%3A0xba9992412516aa7c!2z5bKY5riv57KJ57SF5pWZ5aCC!3m2!1d16.066682699999998!2d108.2226877!4m5!1s0x31421832397ecc0d%3A0x90b24f8b8cb2873f!2sHan%20Market!3m2!1d16.0681959!2d108.2242217!4m5!1s0x314219ed47ca6e31%3A0x36d8d96f4c838dd2!2zY2FmZSAyMjIgTmd1eeG7hW4gQ8O0bmcgdHLhu6ktIMSQw6AgTuG6tW5n!3m2!1d16.0664379!2d108.2364807!4m5!1s0x3142193cf50bef09%3A0x6f1b1de8e432c22e!2sPizza%204P&#39;s%20Indochina%20Da%20Nang!3m2!1d16.0700193!2d108.2249075!4m5!1s0x3142195a335892bd%3A0x8f53976f3c0fe60!2z5bGx6Iy25aSc5biC!3m2!1d16.0616329!2d108.2319775!5e0!3m2!1szh-TW!2stw!4v1752574255629!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+              <table class="itinerary-table">
+                <thead>
+                    <tr class="day-header">
+                        <td colspan="4">第三天 (8/5) - 巴拿山與黃金佛手橋</td>
+                    </tr>
+                    <tr>
+                        <td>08:00-17:00</td>
+                        <td>巴拿山太陽世界 (Sun World Ba Na Hills)</td>
+                        <td>Grab</td>
+                        <td>門票+纜車約 $1,300/人</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>中層：歐式花園、小火車、黃金佛手橋</td>
+                        <td>纜車</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>12:00-14:00</td>
+                        <td>午餐：La Lavande/Aparang/Brasserie</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>14:00-17:00</td>
+                        <td>上層：法國村、幻奇多樂園、旋轉飛天鞦韆</td>
+                        <td>纜車</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>18:30-20:00</td>
+                        <td>晚餐：Veteran Restaurant or Bé Ni 2</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>20:00~</td>
+                        <td>酒吧：Esco Beach Bar 或 Maia beach bar</td>
+                        <td>步行</td>
+                        <td>-</td>
+                    </tr>
+                  </tbody>
+            </table>
+            <div class="card">
+                <h3>🗺️ 第三天主要路線</h3>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m40!1m12!1m3!1d122699.97831118635!2d108.05751343015294!3d16.046053859140105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m25!3e0!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2zUmFkaXNzb24gUkVEIERhbmFuZywgOTAgVsO1IE5ndXnDqm4gR2nDoXAsIE3Dom4gVGjDoWksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAw6LaK5Y2X!3m2!1d16.0808382!2d108.24687229999999!4m5!1s0x3141f60e6b3844c9%3A0x5c53b85f61797909!2z5be05ou_5bGx5aSq6Zm95LiW55WMIOi2iuWNlyDEkMOgIE7hurVuZywgSMOyYSBWYW5nLCBIw7JhIE5pbmg!3m2!1d16.0265144!2d108.03279719999999!4m5!1s0x314217c82ec7b181%3A0xe9367e38bc69120c!2zVmV0ZXJhbiBSZXN0YXVyYW50LCBExrDGoW5nIMSQw6xuaCBOZ2jhu4csIEFuIEjhuqNpLCBBbiBI4bqjaSBC4bqvYywg5bGx6Iy26YOh5bO05riv6LaK5Y2X!3m2!1d16.0689576!2d108.2425892!4m5!1s0x314217a3b04f5fbb%3A0x2b366b654ca8ffc4!2zRXNjbyBCZWFjaCBCYXIgTG91bmdlICYgUmVzdGF1cmFudCwgVsO1IE5ndXnDqm4gR2nDoXAsIFBoxrDhu5tjIE3hu7ksIOWxseiMtumDoeWztOa4r-i2iuWNlw!3m2!1d16.0658995!2d108.246011!5e0!3m2!1szh-TW!2stw!4v1752574423896!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+              <table class="itinerary-table">
+                <thead>
+                    <tr class="day-header">
+                        <td colspan="4">第四天 (8/6) - 會安古鎮的浪漫</td>
+                    </tr>
+                    <tr>
+                        <td>10:00-11:00</td>
+                        <td>前往會安古鎮 (Hoi An Ancient Town)</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>11:00-12:00</td>
+                        <td>漫步會安古鎮</td>
+                        <td>步行</td>
+                        <td>門票約 $150/人</td>
+                    </tr>
+                    <tr>
+                        <td>12:30-13:30</td>
+                        <td>午餐：Pho Xua or Madam Khanh</td>
+                        <td>步行</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>14:00-14:30</td>
+                        <td>Tiệm Chè Xíu (椰子冰)</td>
+                        <td>步行</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>14:30-16:00</td>
+                        <td>下午茶：Poison Cafe</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>16:00-17:30</td>
+                        <td>椰子船</td>
+                        <td>Grab</td>
+                        <td>$272/人</td>
+                    </tr>
+                    <tr>
+                        <td>18:00-19:30</td>
+                        <td>晚餐：Morning Glory Signature</td>
+                        <td>步行</td>
+                        <td>人均約 $600-$1,000</td>
+                    </tr>
+                    <tr>
+                        <td>19:30-20:30</td>
+                        <td>會安懷河乘船 & 放水燈體驗</td>
+                        <td>步行</td>
+                        <td>$292/人</td>
+                    </tr>
+                               </tbody>
+            </table>
+            <div class="card">
+                <h3>🗺️ 第四天主要路線</h3>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m64!1m12!1m3!1d122742.00153916243!2d108.22727455453484!3d15.97768516953521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m49!3e0!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2zUmFkaXNzb24gUkVEIERhbmFuZywgOTAgVsO1IE5ndXnDqm4gR2nDoXAsIE3Dom4gVGjDoWksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAw6LaK5Y2X!3m2!1d16.0808382!2d108.24687229999999!4m5!1s0x31420dd4e1353a7b%3A0xae336435edfcca3!2z5pyD5a6J5biCIOi2iuWNl-W7o-WNl-ecgQ!3m2!1d15.879924099999998!2d108.3267487!4m5!1s0x31420f87b42221e9%3A0xab09886d8af8b19b!2zVGnhu4dtIENow6ggWMOtdSAtIENow6ggTmdvbiBI4buZaSBBbiwgMTU3IFRy4bqnbiBIxrBuZyDEkOG6oW8sIFBoxrDhu51uZyBD4bqpbSBQaOG7lSwgSOG7mWkgQW4sIFF14bqjbmcgTmFtLCDotorljZc!3m2!1d15.8795328!2d108.32393859999999!4m5!1s0x31420f93b1f1a92f%3A0x3f4aea60f62b03ff!2zUE9JU09OIENBRkXMgSAtIFRoZSBPcmlnaW5hbCBIZXJiYWwgQ29mZmVlIExvdW5nZSwgNyBOZ3V54buFbiBUaOG7iyBNaW5oIEtoYWksIFBoxrDhu51uZyBNaW5oIEFuLCBI4buZaSBBbiwgUXXhuqNuZyBOYW0sIOi2iuWNlw!3m2!1d15.8769984!2d108.32570059999999!4m5!1s0x31420d5f3d4b6d37%3A0x1c80488d0ed570db!2zVHJhbmcgY29jb251dCBiYXNrZXQgYm9hdCB0b3VyICggVHJhbmcgQ2FCaSApIOC4peC5iOC4reC4h-C5gOC4o-C4t-C4reC4geC4o-C4sOC4iOC4suC4lOC4oeC4sOC4nuC4o-C5ieC4suC4pyAvIOuwlOq1rOuLiOuwsCDtiKzslrQv44OQ44K544Kx44OD44OI44Oc44O844OILCBWOUdGK0NNMiwgVGjDtG4gVuG6oW4gTMSDbmcsIFThu5UgNCwgVHAuIEjhu5lpIEFuLCBRdeG6o25nIE5hbSwg6LaK5Y2X!3m2!1d15.875928799999999!2d108.374172!4m5!1s0x31420f5defa3fd4f%3A0xd19268473e0395c5!2zTW9ybmluZyBHbG9yeSBTaWduYXR1cmUsIDQxIE5ndXnhu4VuIFBow7pjIENodSwgQW4gSOG7mWksIEjhu5lpIEFuLCBRdeG6o25nIE5hbSA1NjAwMDDotorljZc!3m2!1d15.875921799999999!2d108.3262099!4m5!1s0x31420f27502b3edd%3A0x4f1793b0af2c58ce!2zSG9haSByaXZlciBib2F0LCAzMSBOZ3V54buFbiBQaMO6YyBDaHUsIFBoxrDhu51uZyBNaW5oIEFuLCBI4buZaSBBbiwgUXXhuqNuZyBOYW0sIOi2iuWNlw!3m2!1d15.875740899999998!2d108.3268263!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2zUmFkaXNzb24gUkVEIERhbmFuZywgOTAgVsO1IE5ndXnDqm4gR2nDoXAsIE3Dom4gVGjDoWksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAw6LaK5Y2X!3m2!1d16.0808382!2d108.24687229999999!5e0!3m2!1szh-TW!2stw!4v1752574476263!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+              <table class="itinerary-table">
+                <thead>
+                    <tr class="day-header">
+                        <td colspan="4">第五天 (8/7) - 奢華享受與米其林饗宴</td>
+                    </tr>
+                    <tr>
+                        <td>10:30-12:00</td>
+                        <td>美溪沙灘</td>
+                        <td>步行</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>12:30-13:30</td>
+                        <td>午餐：The Temptation</td>
+                        <td>步行</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>14:00-15:30</td>
+                        <td>Nguon Spa Da Nang</td>
+                        <td>Grab</td>
+                        <td>$445</td>
+                    </tr>
+                    <tr>
+                        <td>16:00-17:00</td>
+                        <td>下午茶：Sơn Trà Marina</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>17:00-17:30</td>
+                        <td>山茶半島靈應寺 (Linh Ung Pagoda)</td>
+                        <td>Grab</td>
+                        <td>免費</td>
+                    </tr>
+                    <tr>
+                        <td>18:30-20:30</td>
+                        <td>晚餐：La Maison 1888</td>
+                        <td>Grab</td>
+                        <td>套餐人均約 $5,000-$8,000</td>
+                    </tr>
+                               </tbody>
+            </table>
+            <div class="card">
+                <h3>🗺️ 第五天主要路線</h3>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m64!1m12!1m3!1d122690.28733693082!2d108.19216368059877!3d16.061780145363556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m49!3e0!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2sRadisson%20RED%20Danang!3m2!1d16.0808382!2d108.24687229999999!4m5!1s0x31421782f7fa0ee3%3A0xeafb8ba272ee55ac!2zTXkgS2hlIEJlYWNoLCDls7TmuK8gNTUwMDAw6LaK5Y2X!3m2!1d16.0616944!2d108.24693459999999!4m5!1s0x3142175a37ec6177%3A0xe5b70d45f6bbd6d7!2sThe%20Temptation!3m2!1d16.0734565!2d108.2431275!4m5!1s0x314219f0f5d947c9%3A0x4a4e64ac0562cb20!2zTmd1b24gU3BhIERhIE5hbmcgLSBOZ3Xhu5NuIEhvw6BuZyBL4bq_IFZpw6pt!3m2!1d16.0489688!2d108.2440955!4m5!1s0x314217fb2504d755%3A0x8d1e9493227bb9ef!2zU8ahbiBUcsOgIE1hcmluYQ!3m2!1d16.0968369!2d108.2669597!4m5!1s0x314210c62c63037d%3A0xb168fc4503bf59a3!2z6Z2I5oeJ5a-6!3m2!1d16.00275!2d108.2645895!4m5!1s0x31423d9513ec9199%3A0x5ade8a2bd4daad0d!2z5bO05riv5rSy6Zqb6Zm95YWJ5Y2K5bO25bqm5YGH6YWS5bqX!3m2!1d16.1208274!2d108.3062154!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2zUmFkaXNzb24gUkVEIERhbmFuZywgOTAgVsO1IE5ndXnDqm4gR2nDoXAsIE3Dom4gVGjDoWksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAw6LaK5Y2X!3m2!1d16.0808382!2d108.24687229999999!5e0!3m2!1szh-TW!2stw!4v1752574548837!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+              <table class="itinerary-table">
+                <thead>
+                    <tr class="day-header">
+                        <td colspan="4">第六天 (8/8) - 最後巡禮與告別</td>
+                    </tr>
+                    <tr>
+                        <td>09:30-11:00</td>
+                        <td>Check out / 伴手禮 GO! Đà Nẵng</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>11:00-11:30</td>
+                        <td>前往機場</td>
+                        <td>Grab</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>12:55-16:45</td>
+                        <td>VN → TW BR384</td>
+                        <td>飛機</td>
+                        <td>機票費用</td>
+                    </tr>
+                    <tr>
+                        <td>17:00-18:00</td>
+                        <td>返回溫暖的家!</td>
+                        <td>計程車</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+                        <div class="card">
+                <h3>🗺️ 第六天主要路線</h3>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d30672.139034667947!2d108.20402574155172!3d16.0645879152811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x314217e1390921bb%3A0x8484559f28963b1c!2zUmFkaXNzb24gUkVEIERhbmFuZywgOTAgVsO1IE5ndXnDqm4gR2nDoXAsIE3Dom4gVGjDoWksIFPGoW4gVHLDoCwgxJDDoCBO4bq1bmcgNTUwMDAw6LaK5Y2X!3m2!1d16.0808382!2d108.24687229999999!4m5!1s0x314219bab9b63451%3A0xd7a9441e697a048c!2zRGFuYW5nIEludGVybmF0aW9uYWwgQWlycG9ydCwgxJDGsOG7nW5nIE5ndXnhu4VuIFbEg24gTGluaCwg5rW35bee6YOh5rW35rSy6YOh5bO05riv6LaK5Y2X!3m2!1d16.0569804!2d108.2025372!5e0!3m2!1szh-TW!2stw!4v1752574761450!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+              <table class="itinerary-table">
+                <thead>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <!-- Attractions Section -->
+        <div id="attractions" class="section">
+            <div class="section-header">
+                <h2>主要景點概覽</h2>
+            </div>
+            
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="https://image.cdn-eztravel.com.tw/aLVfUHk1-FPoQKyM0OzYXQMLeBJEWqan5Gqb6KBxoro/g:ce/aHR0cHM6Ly92YWNhdGlvbi5jZG4tZXp0cmF2ZWwuY29tLnR3L2ltZy9WRFIvVklfMTQ0MjQwNjYxMS5qcGc.jpg" alt="山茶半島">
+                    <h4>山茶半島</h4>
+                    <p>島上有一座知名的靈應寺，地理位置優越，不管從寺廟哪個角度都可以眺望到大海。</p>
+                </div>
+                
+                <div class="image-item">
+                    <img src="https://vietnamtravel.com/images/2020/04/golden-bridge-bana-hills.jpg" alt="巴拿山黃金橋">
+                    <h4>巴拿山黃金橋</h4>
+                    <p>由巨大石手托起的金色橋樑，Instagram熱門打卡景點。</p>
+                </div>
+                
+                <div class="image-item">
+                    <img src="https://hiddenhoian.com/wp-content/uploads/2019/07/lantern-lined-streets.jpg" alt="會安古鎮">
+                    <h4>會安古鎮</h4>
+                    <p>世界文化遺產，保存完好的古老貿易港口，夜晚燈籠璀璨。</p>
+                </div>
+                
+                <div class="image-item">
+                    <img src="https://static.vinwonders.com/2022/09/My-khe-beach-1.jpeg" alt="美溪沙灘">
+                    <h4>美溪沙灘</h4>
+                    <p>綿延30公里的白沙灘，被美國《富比世》評為世界最美海灘之一。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <!-- Food Section -->
+        <div id="food" class="section">
+            <div class="section-header">
+                <h2>美食推薦</h2>
+            </div>
+            
+            <div class="restaurant-grid">
+                <div class="restaurant-card">
+                    <h4>Bếp Cuốn Đà Nẵng</h4>
+                    <div class="specialty">招牌：越式生春捲、炸餛飩</div>
+                    <p>地道越南料理，新鮮食材搭配傳統做法，價格親民，當地人也愛吃。</p>
+                </div>
+                
+                <div class="restaurant-card">
+                    <h4>Mì Quảng Ếch Bếp Trang</h4>
+                    <div class="specialty">招牌：廣南麵（米其林推薦）</div>
+                    <p>峴港最著名的廣南麵店，湯頭濃郁，配菜豐富，是必嚐的地方特色。</p>
+                </div>
+                
+                <div class="restaurant-card">
+                    <h4>Pizza 4P's</h4>
+                    <div class="specialty">招牌：義式手工披薩</div>
+                    <p>日式管理的義式餐廳，使用當地食材製作，環境優雅，適合約會。</p>
+                </div>
+                
+                <div class="restaurant-card">
+                    <h4>Morning Glory</h4>
+                    <div class="specialty">招牌：越式傳統料理</div>
+                    <p>會安知名餐廳，提供多樣化越南菜，食材新鮮，烹調精緻。</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🍃 路邊攤小吃推薦</h3>
+                <ul>
+                    <li><strong>椰子冰：</strong>清爽解暑，約 30,000 VND</li>
+                    <li><strong>越式咖啡：</strong>香醇濃郁，約 25,000 VND</li>
+                    <li><strong>烤肉串：</strong>夜市必食，約 15,000 VND/串</li>
+                    <li><strong>越式法國麵包：</strong>酥脆可口，約 20,000 VND</li>
+                </ul>
+            </div>
+            
+            <div class="image-item">
+                <img src="https://c8.alamy.com/comp/2C2JJPA/traditional-vietnamese-street-food-sold-in-da-nang-night-market-vietnam-2C2JJPA.jpg" alt="越南街頭美食">
+                <h4>峴港夜市美食</h4>
+                <p>多樣化的越南小吃，價格親民，體驗當地飲食文化的最佳選擇。</p>
+            </div>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <!-- Expenses Section -->
+        <div id="expenses" class="section">
+            <div class="section-header">
+                <h2>花費估算表</h2>
+            </div>
+            
+<table class="expense-table">                 
+    <thead>                     
+        <tr>                         
+            <th>類別</th>                         
+            <th>項目</th>                         
+            <th>預估花費 (TWD)</th>                     
+        </tr>                 
+    </thead>                 
+    <tbody>                     
+        <tr>                         
+            <td class="category">機票</td>                         
+            <td>來回機票 (兩人份)</td>                         
+            <td>25,354</td>                     
+        </tr>                     
+        <tr>                         
+            <td class="category">住宿</td>                         
+            <td>六天五夜住宿 (總費用)</td>                         
+            <td>22,189</td>                     
+        </tr>                     
+        <tr>                         
+            <td class="category">簽證</td>                         
+            <td>落地簽證或電子簽證 (兩人份)</td>                         
+            <td>1,600 - 3,000</td>                     
+        </tr>                     
+        <tr>                         
+            <td class="category" rowspan="3">交通</td>                         
+            <td>機場接送 / Grab (總費用)</td>                         
+            <td>280</td>                     
+        </tr>                     
+        <tr>                         
+            <td>市區Grab (每日估計總費用)</td>                         
+            <td>140 - 280</td>                     
+        </tr>                     
+        <tr>                         
+            <td>會安來回Grab (總費用)</td>                         
+            <td>840</td>                     
+        </tr>                     
+        <tr>                         
+            <td class="category" rowspan="4">門票</td>                         
+            <td>五行山 (門票+電梯，兩人份)</td>                         
+            <td>300</td>                     
+        </tr>                     
+        <tr>                         
+            <td>巴拿山太陽世界 (門票+纜車，兩人份)</td>                         
+            <td>2,600</td>                     
+        </tr>                     
+        <tr>                         
+            <td>會安古鎮門票 (兩人份)</td>                         
+            <td>300</td>                     
+        </tr>                     
+        <tr>                         
+            <td>山茶半島靈應寺</td>                         
+            <td>免費</td>                     
+        </tr>                     
+        <tr>                         
+            <td class="category" rowspan="4">餐飲</td>                         
+            <td>一般餐點 (人均 250-400，兩人份)</td>                         
+            <td>500 - 800</td>                     
+        </tr>                     
+        <tr>                         
+            <td>米其林推薦 (Mì Quảng Ếch Bếp Trang，兩人份)</td>                         
+            <td>500 - 800</td>                     
+        </tr>                     
+        <tr>                         
+            <td>高級餐廳 (La Maison 1888，兩人份)</td>                         
+            <td>10,000 - 16,000</td>                     
+        </tr>                     
+        <tr>                         
+            <td>路邊攤小吃 (兩人份，品項約 20-50)</td>                         
+            <td>約 40 - 100 / 品項</td>                     
+        </tr>                     
+        <tr>                         
+            <td class="category" rowspan="4">體驗</td>                         
+            <td>Babylon Spa Massage (兩人份)</td>                         
+            <td>890</td>                     
+        </tr>                     
+        <tr>                         
+            <td>椰子船體驗 (兩人份)</td>                         
+            <td>544</td>                     
+        </tr>                     
+        <tr>                         
+            <td>會安懷河乘船 & 放水燈體驗 (兩人份)</td>                         
+            <td>584</td>                     
+        </tr>                     
+        <tr>                         
+            <td>Nguon Spa Da Nang (兩人份)</td>                         
+            <td>890</td>                     
+        </tr>                     
+        <tr>                         
+            <td class="category" rowspan="5">其他</td>                         
+            <td>伴手禮</td>                         
+            <td>依個人消費</td>                     
+        </tr>                     
+        <tr>                         
+            <td>購物</td>                         
+            <td>依個人消費</td>                     
+        </tr>                     
+        <tr>                         
+            <td>小費</td>                         
+            <td>依個人消費</td>                     
+        </tr>                     
+        <tr>                         
+            <td>SIM卡/網卡 (兩人份)</td>                         
+            <td>約 600 - 1,000</td>                     
+        </tr>                     
+        <tr>                         
+            <td>旅遊保險</td>                         
+            <td>依個人需求</td>                     
+        </tr>                  
+        <tr style="background: var(--vietnam-yellow); font-weight: bold;">                         
+            <td colspan="2">總計預估花費 (不含伴手禮、購物、小費、旅遊保險等個人消費)</td>                         
+            <td>約 NT$ 66,787 - 78,187</td>                     
+        </tr>                 
+    </tbody>             
+</table>
+
+<div class="card">
+    <h3>每日花費估算 (TWD):</h3>
+    <ul>
+        <li>第一天 (8/3): 交通 280 + 餐飲約 840 = 約 1,120</li>
+        <li>第二天 (8/4): 交通 140-280 + 門票 300  + 餐飲約 800  + 咖啡約 100  = 約 1,340 - 1,480</li>
+        <li>第三天 (8/5): 交通 980 + 門票 2,600  + 餐飲約 980  = 約 4,560</li>
+        <li>第四天 (8/6): 交通 840 + 門票 300 + 餐飲約 1,200  + 體驗 1,128 = 約 3,468</li>
+        <li>第五天 (8/7): 交通 140 + 餐飲約 10,000 - 16,000 + 體驗 890 = 約 11,030 - 17,030</li>
+        <li>第六天 (8/8): 交通 280 + 餐飲約 560  = 約 840</li>
+    </ul>
+</div>
+            <div class="card">
+                <h3>💡 省錢小貼士</h3>
+                <ul>
+                    <li>住宿選擇當地民宿或青年旅館可節省成本</li>
+                    <li>多嘗試路邊攤美食，便宜又道地</li>
+                    <li>使用Grab共享交通，比計程車便宜</li>
+                    <li>景點門票可上網預訂，通常有折扣</li>
+                    <li>購物時記得議價，特別是在市場</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <!-- Notes Section -->
+        <div id="notes" class="section">
+            <div class="section-header">
+                <h2>其他注意事項</h2>
+            </div>
+            
+            <div class="card">
+                <h3>🚗 交通安全</h3>
+                <p>越南交通靠右行駛，摩托車眾多，過馬路時要格外注意安全。建議使用斑馬線，並確認兩邊都無來車再通過。</p>
+            </div>
+            
+            <div class="card">
+                <h3>🍽️ 用餐禮儀</h3>
+                <p>部分高級餐廳需要提前預約，並有服裝規定。建議攜帶長褲和有袖上衣，避免穿著過於隨便。</p>
+            </div>
+            
+            <div class="card">
+                <h3>🏔️ 山區氣候</h3>
+                <p>巴拿山海拔較高，氣溫比平地低5-10度，建議攜帶薄外套。雨季時山區容易起霧，影響視線。</p>
+            </div>
+            
+            <div class="card">
+                <h3>🏛️ 寺廟參觀</h3>
+                <p>參觀寺廟時請注意服裝，需穿著得體，遮蓋肩膀和膝蓋。進入寺廟前請脫鞋，保持安靜。</p>
+            </div>
+            
+            <div class="card">
+                <h3>💊 健康提醒</h3>
+                <ul>
+                    <li>建議攜帶止瀉藥，以防水土不服</li>
+                    <li>多喝瓶裝水，避免生食</li>
+                    <li>防曬措施要做足，越南日照強烈</li>
+                    <li>蚊蟲較多，建議攜帶防蚊液</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>📱 通訊網路</h3>
+                <p>建議購買當地SIM卡或開通國際漫遊，主要電信商有Viettel、Mobifone、Vinaphone。WiFi在餐廳和咖啡店普遍提供。</p>
+            </div>
+        </div>
+
+        <div class="lotus-divider">🪷 🪷 🪷</div>
+
+        <div style="text-align: center; margin: 40px 0; color: var(--vietnam-red); font-size: 1.2em;">
+            <p>祝您在越南峴港有個愉快的旅程！</p>
+            <p>Chúc bạn có một chuyến du lịch vui vẻ tại Đà Nẵng!</p>
+        </div>
+    </div>
+
+    <script>
+        function printPage() {
+            window.print();
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
+</body>
+</html>
